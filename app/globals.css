@@ -1,0 +1,144 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&family=Martel+Sans:wght@200;300;400;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary-dark: #353c4a;
+  --accent-red: #d94e50;
+  --light-bg: #f8f8f9;
+  --text-gray: #909193;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: 'Martel Sans', sans-serif;
+    color: var(--text-gray);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Ubuntu', sans-serif;
+  }
+}
+
+@layer components {
+  .section-title {
+    @apply inline-block px-12 py-3 text-white text-sm font-bold tracking-widest uppercase;
+    background-color: var(--primary-dark);
+    position: relative;
+  }
+
+  .section-title::before,
+  .section-title::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 0;
+    height: 0;
+    border-style: solid;
+  }
+
+  .section-title::before {
+    left: -15px;
+    border-width: 22px 15px 22px 0;
+    border-color: transparent var(--primary-dark) transparent transparent;
+  }
+
+  .section-title::after {
+    right: -15px;
+    border-width: 22px 0 22px 15px;
+    border-color: transparent transparent transparent var(--primary-dark);
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center px-6 py-3 font-semibold text-white transition-all duration-300;
+    background-color: var(--primary-dark);
+  }
+
+  .btn-primary:hover {
+    background-color: var(--accent-red);
+  }
+
+  .btn-accent {
+    @apply inline-flex items-center font-semibold text-white transition-all duration-300;
+    background-color: var(--accent-red);
+  }
+
+  .service-card {
+    @apply bg-white shadow-lg overflow-hidden;
+  }
+
+  .service-card-title {
+    @apply py-4 text-center text-white font-bold tracking-wider;
+    background-color: var(--accent-red);
+  }
+}
+
+@layer utilities {
+  .text-primary-dark {
+    color: var(--primary-dark);
+  }
+
+  .bg-primary-dark {
+    background-color: var(--primary-dark);
+  }
+
+  .text-accent-red {
+    color: var(--accent-red);
+  }
+
+  .bg-accent-red {
+    background-color: var(--accent-red);
+  }
+
+  .bg-light {
+    background-color: var(--light-bg);
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary-dark);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-red);
+}
+
+/* Slider animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+/* Team member hover effect */
+.team-card:hover .team-overlay {
+  opacity: 1;
+}
+
+.team-card:hover .team-info {
+  transform: translateY(0);
+}
+
+/* Portfolio hover */
+.portfolio-item:hover .portfolio-overlay {
+  opacity: 1;
+}
